@@ -10,6 +10,7 @@ export default defineSchema({
         tags: v.optional(v.array(v.string())),
         isPublished: v.boolean(),
         publishedAt: v.number(),
+        views: v.optional(v.number()),
     })
         .index("by_slug", ["slug"])
         .index("by_published", ["isPublished", "publishedAt"]),

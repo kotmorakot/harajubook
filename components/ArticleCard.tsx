@@ -6,15 +6,18 @@ interface ArticleCardProps {
     slug: string;
     publishedAt: number;
     tags?: string[];
+    views?: number;
 }
 
-export function ArticleCard({ title, slug, publishedAt, tags }: ArticleCardProps) {
+export function ArticleCard({ title, slug, publishedAt, tags, views }: ArticleCardProps) {
     return (
         <article className="group relative flex flex-col space-y-2 py-4">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <time dateTime={new Date(publishedAt).toISOString()}>
                     {format(publishedAt, "MMMM dd, yyyy")}
                 </time>
+                <span>&middot;</span>
+                <span>{views ?? 0} views</span>
                 {tags && tags.length > 0 && (
                     <>
                         <span>&middot;</span>

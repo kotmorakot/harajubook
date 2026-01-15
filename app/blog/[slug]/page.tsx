@@ -1,3 +1,4 @@
+import { ViewCounter } from "@/components/ViewCounter";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 import { notFound } from "next/navigation";
@@ -37,11 +38,14 @@ export default async function ArticlePage({ params }: PageProps) {
 
     return (
         <article className="container max-w-3xl py-10">
+            <ViewCounter slug={slug} />
             <header className="mb-10 space-y-4 text-center">
                 <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                     <time dateTime={new Date(article.publishedAt).toISOString()}>
                         {format(article.publishedAt, "MMMM dd, yyyy")}
                     </time>
+                    <span>&middot;</span>
+                    <span>{article.views ?? 0} views</span>
                     {article.tags && article.tags.length > 0 && (
                         <>
                             <span>&middot;</span>

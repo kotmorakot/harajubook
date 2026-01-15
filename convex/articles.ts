@@ -76,6 +76,23 @@ export const deleteArticle = mutation({
     },
 });
 
+// Public: Increment view count
+export const incrementViewCount = mutation({
+    args: { slug: v.string() },
+    handler: async (ctx, args) => {
+        const article = await ctx.db
+            .query("articles")
+            .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+            .unique();
+
+        if (article) {
+            await ctx.db.patch(article._id, {
+                views: (article.views || 0) + 1,
+            });
+        }
+    },
+});
+
 // Admin: List all articles (including unpublished)
 export const listAll = query({
     handler: async (ctx) => {

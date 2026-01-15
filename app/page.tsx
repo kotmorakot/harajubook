@@ -33,6 +33,7 @@ export default function Home() {
               slug={article.slug}
               publishedAt={article.publishedAt}
               tags={article.tags}
+              views={article.views}
             />
           ))
         )}

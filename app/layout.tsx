@@ -52,7 +52,7 @@ export default function RootLayout({
             <div className="container flex flex-col items-center justify-between gap-4 md:h-16 md:flex-row">
               <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
                 Built by <span className="font-semibold text-foreground">Antigravity</span>.
-                The source code is available on <span className="underline underline-offset-4">GitHub</span>.
+                The source code is available on <a href="https://github.com/kotmorakot/harajubook" target="_blank" rel="noreferrer" className="underline underline-offset-4">GitHub</a>.
               </p>
             </div>
           </footer>
